@@ -4,7 +4,13 @@ FROM debian:latest
 # Install Dependencies
 RUN apt-get update && \
     apt-get upgrade -y
-RUN apt-get install sudo python2 python-is-python3 python3 git repo bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev tmux tmate openssh-server -y
+RUN apt-get install sudo python-is-python3 python3 git bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev tmux tmate openssh-server -y
+
+# Installing Repo
+RUN mkdir -p ~/.bin && \
+    PATH="${HOME}/.bin:${PATH}" && \
+    curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo && \
+    chmod a+rx ~/.bin/repo
 
 # Configuring User For Workspace
 RUN adduser rvlpromaster && \
