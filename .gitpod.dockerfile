@@ -30,8 +30,8 @@ USER gitpod
 
 # Customization Bash
 RUN curl -s https://ohmyposh.dev/install.sh | bash
-RUN mkdir -p /home/rvlpromaster/.poshthemes
-RUN curl -L https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/if_tea.omp.json -o /home/rvlpromaster/.poshthemes/if_tea.omp.json
+RUN mkdir -p /home/gitpod/.poshthemes
+RUN curl -L https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/if_tea.omp.json -o /home/gitpod/.poshthemes/if_tea.omp.json
 RUN echo 'eval "$(oh-my-posh init bash --config ~/.poshthemes/if_tea.omp.json)"' >> /home/gitpod/.bashrc
 
 # Start bash
