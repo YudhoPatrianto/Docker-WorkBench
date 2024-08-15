@@ -21,6 +21,13 @@ RUN useradd -l -u 33333 -G sudo -md /home/rvlpromaster -s /bin/bash -p rvlpromas
 USER rvlpromaster
 WORKDIR /home/rvlpromaster
 
+# Set Locale and localtime
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+RUN locale-gen en_US.UTF-8
+RUN sudo ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+
 # Customization Bash
 RUN curl -s https://ohmyposh.dev/install.sh | bash
 RUN curl -L https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/if_tea.omp.json -o /home/User123/.poshthemes/if_tea.omp.json
