@@ -1,6 +1,9 @@
 # Use OS Debian 12/ Debian Bookworm For Default OS
 FROM debian:latest
 
+# Set To noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Install Dependencies
 RUN apt-get update && \
     apt-get upgrade -y
