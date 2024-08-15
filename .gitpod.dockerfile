@@ -22,20 +22,17 @@ ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 
 # Configuring User For Workspace
-RUN groupadd -g 33334 rvlpromaster && \
-    useradd -l -u 33333 -g 33334 -md /home/rvlpromaster -s /bin/bash -p rvlpromaster rvlpromaster && \
+RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod && \
     sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
 
-
 # Switch To rvlpromaster User
-USER rvlpromaster
-WORKDIR /home/rvlpromaster
+USER gitpod
 
 # Customization Bash
 RUN curl -s https://ohmyposh.dev/install.sh | bash
 RUN mkdir -p /home/rvlpromaster/.poshthemes
 RUN curl -L https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/if_tea.omp.json -o /home/rvlpromaster/.poshthemes/if_tea.omp.json
-RUN echo 'eval "$(oh-my-posh init bash --config ~/.poshthemes/if_tea.omp.json)"' >> /home/rvlpromaster/.bashrc
+RUN echo 'eval "$(oh-my-posh init bash --config ~/.poshthemes/if_tea.omp.json)"' >> /home/gitpod/.bashrc
 
 # Start bash
 CMD ["bash"]
