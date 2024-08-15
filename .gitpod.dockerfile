@@ -22,8 +22,10 @@ ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 
 # Configuring User For Workspace
-RUN useradd -l -u 33333 -G sudo -md /home/rvlpromaster -s /bin/bash -p rvlpromaster rvlpromaster && \
+RUN groupadd -g 33334 rvlpromaster && \
+    useradd -l -u 33333 -g 33334 -md /home/rvlpromaster -s /bin/bash -p rvlpromaster rvlpromaster && \
     sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
+
 
 # Switch To rvlpromaster User
 USER rvlpromaster
