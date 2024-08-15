@@ -13,7 +13,7 @@ RUN mkdir -p ~/.bin && \
     chmod a+rx ~/.bin/repo
 
 # Configuring User For Workspace
-RUN useradd -l -u 33333 -G sudo -md /home/rvlpromaster -s /bin/bash -p rvlpromaster rvlpromaster
+RUN useradd -l -u 33333 -G sudo -md /home/rvlpromaster -s /bin/bash -p rvlpromaster rvlpromaster && \
     sed -i '/^# User privilege specification/a rvlpromaster ALL=(ALL:ALL) ALL' /etc/sudoers && \
     sed -i '/^# Allow members of group sudo to execute any command/a %rvlpromaster ALL=(ALL:ALL) ALL' /etc/sudoers
 
