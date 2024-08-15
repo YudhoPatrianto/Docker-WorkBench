@@ -16,7 +16,8 @@ RUN mkdir -p ~/.bin && \
     chmod a+rx ~/.bin/repo
 
 # Configuring User For Workspace
-RUN useradd -m -s /bin/bash rvlpromaster && echo "rvlpromaster:rvlpromaster" | chpasswd && adduser rvlpromaster sudo
+RUN useradd -l -u 33333 -G sudo -md /home/rvlpromaster -s /bin/bash -p rvlpromaster rvlpromaster && \
+    sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
 
 # Set Locale and localtime
 ENV LC_ALL en_US.UTF-8
