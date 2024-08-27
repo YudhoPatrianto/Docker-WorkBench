@@ -1,5 +1,5 @@
-# Use OS Debian 12/ Debian Bookworm For Default OS
-FROM ubuntu:latest
+# Use OS Ubuntu 22.04 For Default OS
+FROM ubuntu:jammy
 
 # Set To noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
