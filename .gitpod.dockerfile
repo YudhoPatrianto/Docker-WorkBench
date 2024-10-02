@@ -28,5 +28,9 @@ RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod &
 # Switch To gitpod User
 USER gitpod
 
+# Configure Git Information
+RUN git config --global user.name YudhoPatrianto
+RUN git config --global user.email kydh01123@gmail.com
+
 # Start bash
 CMD ["bash"]
